@@ -2,7 +2,8 @@ package com.mycompany.springannotationdemo;
 
 import org.springframework.stereotype.Component;
 
-@Component("theTennisCoach")
+//@Component("theTennisCoach") used before
+@Component
 public class TennisCoach implements Coach {
 
 	@Override
