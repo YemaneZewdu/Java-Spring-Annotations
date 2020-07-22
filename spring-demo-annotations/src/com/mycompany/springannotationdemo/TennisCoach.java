@@ -11,9 +11,17 @@ public class TennisCoach implements Coach {
 	
 	// constructor injection
 	// Spring will scan for a component that implements FortuneService interface 
-	@Autowired
+	// changed to using setter injection
+	/* 
+	  @Autowired
+	 
 	public TennisCoach(FortuneService theFortuneService) {
 		 fortuneService = theFortuneService;
+	}
+	*/
+	
+	public TennisCoach() {
+		 System.out.println("Inside Tennis Coach default constructor");
 	}
 
 	@Override
@@ -26,5 +34,14 @@ public class TennisCoach implements Coach {
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
 	}
+
+	// we can use any method as long as we have the annotation
+	@Autowired
+	public void setFortuneService(FortuneService fortuneService) {
+		System.out.println("Inside Tennis Coach setter method");
+		this.fortuneService = fortuneService;
+	}
+	
+	
 
 }
