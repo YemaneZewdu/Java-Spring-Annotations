@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TennisCoach implements Coach {
 	
+	@Autowired
 	private FortuneService fortuneService;
 	
 	// constructor injection
@@ -36,11 +37,14 @@ public class TennisCoach implements Coach {
 	}
 
 	// we can use any method as long as we have the annotation
+	/* moved to using field injection
+	 
 	@Autowired
 	public void setFortuneService(FortuneService fortuneService) {
 		System.out.println("Inside Tennis Coach setter method");
 		this.fortuneService = fortuneService;
 	}
+	*/
 	
 	
 
