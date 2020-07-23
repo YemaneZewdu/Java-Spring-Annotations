@@ -1,5 +1,6 @@
 package com.mycompany.springannotationdemo;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,5 +10,20 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("com.mycompany.springannotationdemo")
 public class SportConfig {
 
+	// define bean for SadFortuneService class
+	// Spring will take the method name and assign it in the container
+	@Bean
+	public FortuneService sadFortuneService() {
+		return  new SadFortuneService();
+	}
+	
+	// define bean for SwimCoach and Inject the dependency
+	@Bean
+	public Coach basketBallCoach() {
+		// sadFortuneService() will get us the reference to the bean
+		return new BasketBallCoach(sadFortuneService());
+	}
+	
+	
 	
 }
