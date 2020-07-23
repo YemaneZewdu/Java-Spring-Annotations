@@ -1,5 +1,8 @@
 package com.mycompany.springannotationdemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -7,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 //@Component("theTennisCoach") used before 1
 @Component
-@Scope("prototype")
+//@Scope("prototype")  // removed to use default scope 
 public class TennisCoach implements Coach {
 	
 	@Autowired
@@ -26,6 +29,25 @@ public class TennisCoach implements Coach {
 		 fortuneService = theFortuneService;
 	}
 	*/
+	
+	
+	
+	// init method
+	@PostConstruct
+	public void doInitStuff() {
+		System.out.println("Inside doInitStuff method ");
+	}
+	
+	
+	// destroy method
+	@PreDestroy
+	public void doCleanupStuff() {
+		System.out.println("Inside doCleanupStuff method ");
+	}
+	
+	
+	
+	
 	
 	public TennisCoach() {
 		 System.out.println("Inside Tennis Coach default constructor");
